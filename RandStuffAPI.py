@@ -12,6 +12,8 @@ class RandStuffAPI:
         req = self.session.post(url = self.api('number'), headers = self.headers, data = data)
         return objects.Number(req.json()).Number
 
+    #numbers: 1 - on, 2 - off
+    #Symbols: 1 - on, 2 - off
     def password(self, length: int, numbers: int, symbols: int):
         data = {'length': length, 'numbers': numbers, 'symbols': symbols}
         req = self.session.post(url = self.api('password'), headers = self.headers, data = data)
