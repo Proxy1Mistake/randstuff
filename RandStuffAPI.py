@@ -17,7 +17,7 @@ class RandStuffAPI:
         req = self.session.post(url = self.api('password'), headers = self.headers, data = data)
         return objects.Password(req.json()).Password
 
-    def ask(self, question):
+    def ask(self, question : str):
         data = {'question': question}
         req = self.session.post(url=self.api('ask'), headers=self.headers, data=data)
         return objects.Ask(req.json()).Ask
