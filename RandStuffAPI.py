@@ -21,17 +21,17 @@ class RandStuffAPI:
 
     def ask(self, question : str):
         data = {'question': question}
-        req = self.session.post(url=self.api('ask'), headers=self.headers, data=data)
+        req = self.session.post(url = self.api('ask'), headers = self.headers, data = data)
         return objects.Ask(req.json()).Ask
 
     def ticket(self):
-        req = self.session.post(url=self.api('ticket'), headers=self.headers)
+        req = self.session.post(url = self.api('ticket'), headers = self.headers)
         return objects.Ticket(req.json()).Ticket
 
     def fact(self):
-        req = self.session.post(url=self.api('fact'), headers=self.headers)
+        req = self.session.post(url = self.api('fact'), headers = self.headers)
         return objects.Fact(req.json()).Fact
 
     def saying(self):
-        req = self.session.post(url=self.api('saying'), headers=self.headers)
+        req = self.session.post(url = self.api('saying'), headers = self.headers)
         return objects.Saying(req.json()).Saying
