@@ -1,7 +1,7 @@
 from .util import headers, objects
 from requests import Session
 
-class randStuff:
+class RandStuffAPI:
     def __init__(self):
         self.api = 'https://randstuff.ru/{}/generate/'.format
         self.session = Session()
