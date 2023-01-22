@@ -1,3 +1,8 @@
+<h2 align = "center">
+<img src = "https://randstuff.ru/public/images/logo.png">
+<br></br>RandStuffAPI
+</h2>
+
 <details align = "center">
 <summary>ENG : </summary>
 
