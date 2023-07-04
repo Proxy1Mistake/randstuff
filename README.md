@@ -4,27 +4,13 @@
 </h2>
 
 <details align = "center">
-<summary>ENG : </summary>
+<summary>ENG/RU : </summary>
 
-###### This library is designed to work with the RandStuff site API
+###### This library is designed to work with the RandStuff site API/Эта библиотека предназначена для работы с API сайта RandStuff.
 
-###### example :
+###### example/Пример :
 ```
-from RandStuffAPI import RandStuffAPI
-generator = RandStuffAPI.saying()
-print("author - {generator.author}\ntext - {generator.text}")
+from randstuff_API import randstuff_API
+print(author := randstuff_API().saying().author)
 ```
-</details>
-
-<details align = "center">
-<summary>RU : </summary>
-
-###### Эта библиотека предназначена для работы с API сайта RandStuff.
-
-###### Пример :
-```
-from RandStuffAPI import RandStuffAPI
-generator = RandStuffAPI.saying()
-print("author - {generator.author}\ntext - {generator.text}")
-````
 </details>
