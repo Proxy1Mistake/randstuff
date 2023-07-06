@@ -9,7 +9,7 @@
 ###### This library is designed to work with the RandStuff site API/Эта библиотека предназначена для работы с API сайта RandStuff.
 
 ###### example/Пример :
-```
+```py3
 from randstuff_API import randstuff_API
 print(author := randstuff_API().saying().author)
 ```
