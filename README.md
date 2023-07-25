@@ -10,7 +10,8 @@
 
 ###### example/Пример :
 ```py3
-from randstuff_API import randstuff_API
-print(author := randstuff_API().saying().author)
+from randstuff_API import RandstuffApi
+randstuff_API = RandstuffApi()
+print(author := randstuff_API.saying().author)
 ```
 </details>
