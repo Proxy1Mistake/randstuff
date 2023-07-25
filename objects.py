@@ -1,43 +1,44 @@
-class obj_number:
+class ObjectNumber:
     def __init__(self, data):
         self.json = data
         self.number = None
         self.save = None
 
     @property
-    def obj_number(self):
-        try: self.number = self.json['number']
-        except(KeyError, TypeError): pass
-        try: self.save = self.json['save']
+    def object_number(self):
+        try:
+            self.number = self.json['number']
+            self.save = self.json['save']
         except(KeyError, TypeError): pass
         return self
 
-class obj_password:
+class ObjectPassword:
     def __init__(self, data):
         self.json = data
         self.password = None
 
     @property
-    def obj_password(self):
-        try: self.password = self.json['password']
+    def object_password(self):
+        try:
+            self.password = self.json['password']
         except(KeyError, TypeError): pass
         return self
 
-class obj_ask:
+class ObjectAsk:
     def __init__(self, data):
         self.json = data
         self.ask = None
         self.question = None
 
     @property
-    def obj_ask(self):
+    def object_ask(self):
         try: self.ask = self.json['ask']['prediction']
         except(KeyError, TypeError): pass
         try: self.question = self.json['ask']['question']
         except(KeyError, TypeError): pass
         return self
 
-class obj_ticket:
+class ObjectTicket:
     def __init__(self, data):
         self.json = data
         self.ticket = None
@@ -47,20 +48,17 @@ class obj_ticket:
         self.countLucky = None
 
     @property
-    def obj_ticket(self):
-        try: self.ticket = self.json['ticket']
-        except(KeyError, TypeError): pass
-        try: self.lucky = self.json['lucky']
-        except(KeyError, TypeError): pass
-        try: self.stat = self.json['stat']
-        except(KeyError, TypeError): pass
-        try: self.count = self.json['stat']['count']
-        except(KeyError, TypeError): pass
-        try: self.countLucky = self.json['stat']['lucky']
+    def object_ticket(self):
+        try:
+            self.ticket = self.json['ticket']
+            self.lucky = self.json['lucky']
+            self.stat = self.json['stat']
+            self.count = self.json['stat']['count']
+            self.countLucky = self.json['stat']['lucky']
         except(KeyError, TypeError): pass
         return self
 
-class obj_fact:
+class ObjectFact:
     def __init__(self, data):
         self.json = data
         self.fact = None
@@ -68,16 +66,15 @@ class obj_fact:
         self.text = None
 
     @property
-    def obj_fact(self):
-        try: self.fact = self.json['fact']
-        except(KeyError, TypeError): pass
-        try: self.id = self.json['fact']['id']
-        except(KeyError, TypeError): pass
-        try: self.text = self.json['fact']['text']
+    def object_fact(self):
+        try:
+            self.fact = self.json['fact']
+            self.id = self.json['fact']['id']
+            self.text = self.json['fact']['text']
         except(KeyError, TypeError): pass
         return self
 
-class obj_saying:
+class ObjectSaying:
     def __init__(self, data):
         self.json = data
         self.saying = None
@@ -86,13 +83,11 @@ class obj_saying:
         self.text = None
 
     @property
-    def obj_saying(self):
-        try: self.saying = self.json['saying']
-        except(KeyError, TypeError): pass
-        try: self.author = self.json['saying']['author']
-        except(KeyError, TypeError): pass
-        try: self.id = self.json['saying']['id']
-        except: pass
-        try: self.text = self.json['saying']['text']
+    def object_saying(self):
+        try:
+            self.saying = self.json['saying']
+            self.author = self.json['saying']['author']
+            self.id = self.json['saying']['id']
+            self.text = self.json['saying']['text']
         except(KeyError, TypeError): pass
         return self
