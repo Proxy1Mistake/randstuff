@@ -12,7 +12,7 @@ class Data:
 
 class RandstuffApi(Data):
     @classmethod
-    def number(cls, start: int, end: int, count: int = 1) -> int | ObjectNumber:
+    def number(cls, start: int, end: int, count: int = 1) -> int | Number:
         """
         This function is designed to generate a random number
         :param start: the number of the character that number begins with
@@ -27,11 +27,10 @@ class RandstuffApi(Data):
         """
         _data = {'start': start, 'end': end, 'count': count}
         _req = cls._session.post(url = cls._api('number'), headers = cls._headers, data = _data)
-        if _req.status_code != 200: return _req.status_code
-        else: return ObjectNumber(data = _req.json()).object_number
+        return _req.status_code if _req.status_code != 200 else Number(**_req.json())
 
     @classmethod
-    def password(cls, length: int, numbers: int = 1, symbols: int = 1) -> int | ObjectPassword:
+    def password(cls, length: int, numbers: int = 0, symbols: int = 0) -> int | Password:
         """
         This function is for password
 
@@ -46,15 +45,12 @@ class RandstuffApi(Data):
 
         :return: password in json format
         """
-        if numbers: numbers = 2
-        if symbols: symbols = 2
         _data = {'length': length, 'numbers': numbers, 'symbols': symbols}
         _req = cls._session.post(url = cls._api('password'), headers = cls._headers, data = _data)
-        if _req.status_code != 200: return _req.status_code
-        else: return ObjectPassword(data = _req.json()).object_password
+        return _req.status_code if _req.status_code != 200 else Password(**_req.json())
 
     @classmethod
-    def ask(cls, question : str) -> int | ObjectAsk:
+    def ask(cls, question : str) -> int | Ask:
         """
         This function provides answers to questions
 
@@ -65,23 +61,22 @@ class RandstuffApi(Data):
         """
         _data = {'question': question}
         _req = cls._session.post(url = cls._api('ask'), headers = cls._headers, data = _data)
-        if _req.status_code != 200: return _req.status_code
-        else: return ObjectAsk(data = _req.json()).object_ask
+        return _req.status_code if _req.status_code != 200 else Ask(**_req.json()['ask'])
 
     @classmethod
-    def ticket(cls) -> int | ObjectTicket:
+    def ticket(cls) -> int | Ticket:
         _req = cls._session.post(url = cls._api('ticket'), headers = cls._headers)
-        if cls._req.status_code != 200: return cls._req.status_code
-        else: return ObjectTicket(data = _req.json()).object_ticket
+        if _req.status_code != 200: return _req.status_code
+        else:
+            Stat(**_req.json()['stat'])
+            return Ticket(**_req.json())
 
     @classmethod
-    def fact(cls) -> int | ObjectFact:
+    def fact(cls) -> int | Fact:
         _req = cls._session.post(url = cls._api('fact'), headers = cls._headers)
-        if _req.status_code != 200: return _req.status_code
-        else: return ObjectFact(data = _req.json()).object_fact
+        return _req.status_code if _req.status_code != 200 else Fact(**_req.json()['fact'])
 
     @classmethod
-    def saying(cls) -> int | ObjectSaying:
+    def saying(cls) -> int | Saying:
         _req = cls._session.post(url = cls._api('saying'), headers = cls._headers)
-        if _req.status_code != 200: return _req.status_code
-        else: return ObjectSaying(data = _req.json()).object_saying
+        return _req.status_code if _req.status_code != 200 else Saying(**_req.json())
