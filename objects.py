@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 class Number(BaseModel):
-    number: int
+    number: int | list
     save: str
 
 class Password(BaseModel):
@@ -24,7 +24,7 @@ class Fact(BaseModel):
     id: int
     text: str
 
-class Saying:
+class Saying(BaseModel):
     id: int
     text: str
     author: str

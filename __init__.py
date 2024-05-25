@@ -1,2 +1,2 @@
-from .randstuff_API import *
+from .randstuff import *
 from .objects import *
