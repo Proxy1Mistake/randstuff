@@ -3,7 +3,7 @@
 <br></br>RandStuff
 </h2>
 
-<details align = "center">
+<details>
 <summary>ENG/RU : </summary>
 
 ###### ᴛʜɪs ʟɪʙʀᴀʀʏ ɪs ᴅᴇsɪɢɴᴇᴅ ᴛᴏ ᴡᴏʀᴋ ᴡɪᴛʜ ᴛʜᴇ sɪᴛᴇ ʀᴀɴᴅsᴛᴜꜰꜰ.ʀᴜ
@@ -16,7 +16,7 @@ print(Randstuff.saying().author)
 ```
 </details>
 
-<details align = "center">
+<details>
 <summary>ᴍʏ sᴏᴄɪᴀʟ ɴᴇᴛᴡᴏʀᴋ : </summary>
 <br>
 <a href = "https://t.me/Proxy1Mistake" target="_blank">
