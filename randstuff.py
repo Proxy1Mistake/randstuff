@@ -3,7 +3,7 @@ from requests import Session
 from .objects import *
 
 class Randstuff:
-    url = 'https://randstuff.ru/{}/generate/'.format
+    _url = 'https://randstuff.ru/{}/generate/'.format
 
     @classmethod
     def __request_method(cls, method: str, url: str, data: dict = None):
@@ -47,7 +47,7 @@ class Randstuff:
 
         return Number(
             **cls.__request_method(method = 'post',
-                                   url = cls.url('number'),
+                                   url = cls._url('number'),
                                    data = data).json()
         )
 
@@ -75,7 +75,7 @@ class Randstuff:
 
         return Password(
             **cls.__request_method(method = 'post',
-                                   url = cls.url('password'),
+                                   url = cls._url('password'),
                                    data = data).json()
         )
 
@@ -95,7 +95,7 @@ class Randstuff:
 
         return Ask(
             **cls.__request_method(method = 'post',
-                                   url = cls.url('ask'),
+                                   url = cls._url('ask'),
                                    data = data).json()['ask']
         )
 
@@ -107,7 +107,7 @@ class Randstuff:
         :return: Ticket
         """
         req = cls.__request_method(method = 'post',
-                                   url = cls.url('ticket')
+                                   url = cls._url('ticket')
                                    )
         Stat(**req.json()['stat'])
         return Ticket(**req.json())
@@ -121,7 +121,7 @@ class Randstuff:
         """
         return Fact(
             **cls.__request_method(method = 'post',
-                                   url = cls.url('fact')
+                                   url = cls._url('fact')
                                    ).json()['fact']
         )
 
@@ -134,6 +134,6 @@ class Randstuff:
         """
         return Saying(
             **cls.__request_method(method = 'post',
-                                   url = cls.url('saying')
+                                   url = cls._url('saying')
                                    ).json()['saying']
         )

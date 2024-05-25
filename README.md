@@ -1,22 +1,23 @@
 <h2 align = "center">
-<img src = "https://randstuff.ru/favicon-120x120.png">
-<br></br>RandStuff
+<img src = "https://randstuff.ru/public/images/logo.png">
+<br></br>RandStuffAPI
 </h2>
 
-<details>
+<details align = "center">
 <summary>ENG/RU : </summary>
 
-###### ᴛʜɪs ʟɪʙʀᴀʀʏ ɪs ᴅᴇsɪɢɴᴇᴅ ᴛᴏ ᴡᴏʀᴋ ᴡɪᴛʜ ᴛʜᴇ sɪᴛᴇ ʀᴀɴᴅsᴛᴜꜰꜰ.ʀᴜ
-###### ϶ᴛᴀ бибᴧиоᴛᴇᴋᴀ ᴨᴩᴇднᴀзнᴀчᴇнᴀ дᴧя ᴩᴀбоᴛы ᴄ ᴄᴀйᴛоʍ ʀᴀɴᴅsᴛᴜꜰꜰ.ʀᴜ
+###### This library is designed to work with the RandStuff site API
+###### Эта библиотека предназначена для работы с API сайта RandStuff
 
 ###### example/Пример :
 ```py3
-from randstuff import Randstuff
-print(Randstuff.saying().author)
+from randstuff_API import RandstuffApi
+randstuff_API = RandstuffApi()
+print(author := randstuff_API.saying().author)
 ```
 </details>
 
-<details>
+<details align = "center">
 <summary>ᴍʏ sᴏᴄɪᴀʟ ɴᴇᴛᴡᴏʀᴋ : </summary>
 <br>
 <a href = "https://t.me/Proxy1Mistake" target="_blank">
