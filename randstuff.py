@@ -6,7 +6,7 @@ class Randstuff:
     _url = 'https://randstuff.ru/{}/generate/'.format
 
     @classmethod
-    def __request_method(cls, method: str, url: str, data: dict = None):
+    def __request_post(cls, url: str, data: dict = None):
         session = Session()
 
         headers = {
@@ -14,11 +14,9 @@ class Randstuff:
             'x-requested-with': 'XMLHttpRequest'
         }
 
-        if method == 'get': req = session.get(url = url,
-                                              headers = headers)
-        else: req = session.post(url = url,
-                                 data = data,
-                                 headers = headers)
+        req = session.post(url = url,
+                          data = data,
+                          headers = headers)
 
         if req.status_code == 200: return req
 
@@ -46,9 +44,8 @@ class Randstuff:
         }
 
         return Number(
-            **cls.__request_method(method = 'post',
-                                   url = cls._url('number'),
-                                   data = data).json()
+            **cls.__request_post(url = cls._url('number'),
+                                data = data).json()
         )
 
     @classmethod
@@ -74,9 +71,8 @@ class Randstuff:
         }
 
         return Password(
-            **cls.__request_method(method = 'post',
-                                   url = cls._url('password'),
-                                   data = data).json()
+            **cls.__request_post(url = cls._url('password'),
+                                data = data).json()
         )
 
     @classmethod
@@ -94,9 +90,8 @@ class Randstuff:
         }
 
         return Ask(
-            **cls.__request_method(method = 'post',
-                                   url = cls._url('ask'),
-                                   data = data).json()['ask']
+            **cls.__request_post(url = cls._url('ask'),
+                                data = data).json()['ask']
         )
 
     @classmethod
@@ -106,9 +101,7 @@ class Randstuff:
 
         :return: Ticket
         """
-        req = cls.__request_method(method = 'post',
-                                   url = cls._url('ticket')
-                                   )
+        req = cls.__request_post(url = cls._url('ticket'))
         Stat(**req.json()['stat'])
         return Ticket(**req.json())
 
@@ -120,9 +113,8 @@ class Randstuff:
         :return: Fact
         """
         return Fact(
-            **cls.__request_method(method = 'post',
-                                   url = cls._url('fact')
-                                   ).json()['fact']
+            **cls.__request_post(url = cls._url('fact')
+                                ).json()['fact']
         )
 
     @classmethod
@@ -133,7 +125,6 @@ class Randstuff:
         :return: Saying
         """
         return Saying(
-            **cls.__request_method(method = 'post',
-                                   url = cls._url('saying')
-                                   ).json()['saying']
+            **cls.__request_post(url = cls._url('saying')
+                                ).json()['saying']
         )
