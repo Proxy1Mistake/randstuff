@@ -3,25 +3,48 @@ from requests import Session
 from .objects import *
 
 class Randstuff:
+    session = Session()
     _url = 'https://randstuff.ru/{}/generate/'.format
+
+    headers = {
+        "user-agent": "Mozilla/5.0 (Linux; U; Linux x86_64; en-US) AppleWebKit/600.8 (KHTML, like Gecko) Chrome/47.0.1452.400 Safari/536",
+        'x-requested-with': 'XMLHttpRequest'
+    }
 
     @classmethod
     def __request_post(cls, url: str, data: dict = None):
-        session = Session()
-
-        headers = {
-            "user-agent": "Mozilla/5.0 (Linux; U; Linux x86_64; en-US) AppleWebKit/600.8 (KHTML, like Gecko) Chrome/47.0.1452.400 Safari/536",
-            'x-requested-with': 'XMLHttpRequest'
-        }
-
-        req = session.post(url = url,
+        req = cls.session.post(url = url,
                           data = data,
-                          headers = headers)
+                          headers = cls.headers)
 
         if req.status_code == 200: return req
 
         print(f'Error >>> {req.status_code} {req.text}')
         exit()
+
+    @classmethod
+    def sign_up(cls, name: str, email: str, password: str):
+        data = {
+            'name': name,
+            'email': email,
+            'pass': password,
+            'pass_again': password,
+            'privacy': 'on',
+            'signup': 'go'
+        }
+        req = cls.__request_post(url = f'https://randstuff.ru/account/signup/', data = data)
+        cls.headers.update(req.headers)
+        return 'Authorizate' if req.status_code == 200 else req.status_code
+
+    @classmethod
+    def auth(cls, email: str, password: str):
+        data = {
+            'email': email,
+            'pass': password
+        }
+        req = cls.__request_post(url=f'https://randstuff.ru/account/signin/', data = data)
+        cls.headers.update(req.headers)
+        return 'Authorizate' if req.status_code == 200 else req.status_code
 
     @classmethod
     def number(cls, start: int, end: int, count: int = 1) -> Number:
