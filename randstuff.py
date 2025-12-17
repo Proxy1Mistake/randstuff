@@ -151,3 +151,21 @@ class Randstuff:
             **cls.__request_post(url = cls._url('saying')
                                 ).json()['saying']
         )
+
+    @classmethod
+    def saying_like(cls, id: int, rate: str = 'like'):
+        data = {
+            'id': id,
+            'rate': rate
+        }
+        req = cls.__request_post(url = 'https://randstuff.ru/saying/vote/', data = data)
+        return req.json()
+
+    @classmethod
+    def fact_like(cls, id: int, rate: str = 'like'):
+        data = {
+            'id': id,
+            'rate': rate
+        }
+        req = cls.__request_post(url='https://randstuff.ru/fact/vote/', data = data)
+        return req.json()
